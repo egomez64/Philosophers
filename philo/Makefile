@@ -4,7 +4,8 @@ CC = clang
 
 SRCS = src/ft_atoi.c \
 	src/main.c \
-	src/parsing.c
+	src/parsing.c \
+	src/init.c \
 
 HEADERS = includes/philo.h
 
