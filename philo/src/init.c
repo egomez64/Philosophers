@@ -12,38 +12,57 @@
 
 #include <philo.h>
 
-void    init_data(t_data *data, char **av)
+int    init_data(t_data *data, char **av)
 {
 	struct timeval	time;
-	(*data).n_philo = ft_atoi(av[1]);
-	(*data).time_to_die = ft_atoi(av[2]);
-	(*data).time_to_eat = ft_atoi(av[3]);
-	(*data).time_to_sleep = ft_atoi(av[4]);
+	data->n_philo = ft_atoi(av[1]);
+	data->time_to_die = ft_atoi(av[2]);
+	data->time_to_eat = ft_atoi(av[3]);
+	data->time_to_sleep = ft_atoi(av[4]);
 	if (av[5])
-		(*data).max_eat = ft_atoi(av[5]);
+		data->max_eat = ft_atoi(av[5]);
 	else
-		(*data).max_eat = NULL;
-	if (gettimeofday(&time, NULL))
-		return ;
-	(*data).start_time = time.tv_usec;
-	(*data).nb_of_eat = 0;
+		data->max_eat = NULL;
+	data->is_dead = false;
+	data->start_time = get_current_time();
+	data->satiety = 0;
+	return (0);
 }
 
-void	init_philo(t_philo *philo, t_data data)
+void	init_philo(t_philo *philo, t_data *data)
 {
 	int	i;
 
 	i = 0;
-	while (data.n_philo > i)
+	while (data->n_philo > i)
 	{
+		philo[i].data = data;
 		philo[i].id_philo = i + 1;
-		philo[i].is_dead = false;
 		philo[i].last_eat = 0;
 		philo[i].l_fork->id_fork = i;
-		if (i = data.n_philo)
+		if (i = data->n_philo)
 			philo[i].r_fork = philo[0].l_fork->id_fork;
 		else
 			philo[i].r_fork->id_fork = i + 1;
 		i++;
 	}
+}
+
+int	init_mutex(t_data *data)
+{
+	int	check;
+
+	check = pthread_mutex_init(&data->forks->fork_mutex, NULL);
+	if (check != 1)
+		return (-1);
+	check = pthread_mutex_init(&data->is_dead_mutex, NULL);
+	if (check != 1)
+		return (-1);
+	check = pthread_mutex_init(&data->philo_satiety_mutex, NULL);
+	if (check != 1)
+		return (-1);
+	check = pthread_mutex_init(&data->printf_mutex, NULL);
+	if (check != 1)
+		return (-1);
+	return (0);
 }
