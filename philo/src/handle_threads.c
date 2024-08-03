@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy.c                                          :+:      :+:    :+:   */
+/*   handle_threads.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 16:15:26 by egomez            #+#    #+#             */
-/*   Updated: 2024/08/02 16:15:27 by egomez           ###   ########.fr       */
+/*   Created: 2024/08/03 15:13:43 by egomez            #+#    #+#             */
+/*   Updated: 2024/08/03 15:13:44 by egomez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include  <philo.h>
+#include <philo.h>
 
-int	destroy(t_data *data)
+void	handle_threads(t_philo *philo)
 {
-	pthread_mutex_destroy(&data->forks->fork_mutex);
-	pthread_mutex_destroy(&data->is_dead_mutex);
-	pthread_mutex_destroy(&data->philo_satiety_mutex);
-	pthread_mutex_destroy(&data->printf_mutex);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (philo->data->n_philo > i)
+	{
+		pthread_create(&philo->thread_id, NULL, (void *)routine(philo), &philo[i]);
+		i++;
+	}
+	i = 0;
+	while (philo->data->n_philo > i)
+	{
+		pthread_join(philo[i].thread_id, NULL);
+		i++;
+	}
 }

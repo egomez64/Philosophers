@@ -1,10 +1,12 @@
 NAME = philo
 
-CC = clang
+CC = cc
 
 SRCS = src/main.c \
 	src/parsing.c \
 	src/init.c \
+	src/handle_threads.c \
+	src/forks.c \
 	src/routine.c \
 	src/destroy.c \
 	utils/ft_atoi.c \
@@ -17,6 +19,7 @@ HEADERS = includes/philo.h
 OBJS = $(SRCS:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror -Iincludes
+LDFLAGS = -lpthread
 
 ifdef DEBUG
 CFLAGS = -Wall -Wextra -g
@@ -29,7 +32,7 @@ endif
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $@
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $@ $(LDFLAGS)
 
 %.o: %.c $(HEADER)
 	$(CC) $(CFLAGS) $< -c -o $@

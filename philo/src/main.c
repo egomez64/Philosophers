@@ -28,7 +28,7 @@ int	main(int ac, char **av)
 		return (1);
 	init_philo(philo, &data);
 	init_mutex(&data);
-
+	handle_threads(philo);
 	destroy(&data);
 	free (philo);
 	free (data.forks);

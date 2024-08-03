@@ -23,7 +23,7 @@
 
 typedef struct	s_fork
 {
-	int				id_fork;
+	int				usable;
 	pthread_mutex_t	fork_mutex;
 }					t_fork;
 
@@ -60,9 +60,14 @@ int		init_data(t_data *data, char **av);
 void	init_philo(t_philo *philo, t_data *data);
 int		init_mutex(t_data *data);
 
+void	handle_threads(t_philo *philo);
+
+int		check_death(t_philo *philo);
+void	wait_for_forks(t_philo *philo);
 void	philo_think(t_philo *philo);
 void	philo_sleep(t_philo *philo);
 void	philo_eat(t_philo *philo);
+void	*routine(t_philo *philo);
 
 int		destroy(t_data *data);
 

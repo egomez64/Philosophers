@@ -14,7 +14,6 @@
 
 int    init_data(t_data *data, char **av)
 {
-	struct timeval	time;
 	data->n_philo = ft_atoi(av[1]);
 	data->time_to_die = ft_atoi(av[2]);
 	data->time_to_eat = ft_atoi(av[3]);
@@ -22,7 +21,7 @@ int    init_data(t_data *data, char **av)
 	if (av[5])
 		data->max_eat = ft_atoi(av[5]);
 	else
-		data->max_eat = NULL;
+		data->max_eat = 0;
 	data->is_dead = false;
 	data->start_time = get_current_time();
 	data->satiety = 0;
@@ -39,11 +38,12 @@ void	init_philo(t_philo *philo, t_data *data)
 		philo[i].data = data;
 		philo[i].id_philo = i + 1;
 		philo[i].last_eat = 0;
-		philo[i].l_fork->id_fork = i;
-		if (i = data->n_philo)
-			philo[i].r_fork = philo[0].l_fork->id_fork;
+		philo[i].nb_forks = 0;
+		philo[i].l_fork = &data->forks[i];
+		if (philo[i].id_philo == data->n_philo)
+			philo[i].r_fork = &data->forks[0];
 		else
-			philo[i].r_fork->id_fork = i + 1;
+			philo[i].r_fork = &data->forks[i + 1];
 		i++;
 	}
 }
