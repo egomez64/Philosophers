@@ -21,33 +21,55 @@
 #include <stdbool.h>
 #include <sys/time.h>
 
-typedef struct	s_data
-{
-    int			n_philo;
-    int 		time_to_die;
-    int 		time_to_eat;
-    int			time_to_sleep;
-    int 		max_eat;
-	long int	start_time;
-	int			nb_of_eat;
-}				t_data;
-
 typedef struct	s_fork
 {
 	int				id_fork;
-	pthread_mutex_t	fork;
+	pthread_mutex_t	fork_mutex;
 }					t_fork;
+
+typedef struct	s_data
+{
+    int					n_philo;
+    int 				time_to_die;
+    int 				time_to_eat;
+    int					time_to_sleep;
+    int 				max_eat;
+	bool				is_dead;
+	long int			start_time;
+	int					satiety;
+	t_fork				*forks;
+	pthread_mutex_t		is_dead_mutex;
+	pthread_mutex_t		philo_satiety_mutex;
+	pthread_mutex_t		printf_mutex;
+}						t_data;
 
 typedef struct	s_philo
 {
+	t_data			*data;
     int				id_philo;
-	bool			is_dead;
 	long int		last_eat;
+	int				nb_forks;
+	pthread_t		thread_id;
 	t_fork	*l_fork;
 	t_fork	*r_fork;
 }					t_philo;
 
-int parsing(char **av, int ac);
-int	ft_atoi(const char *nptr);
+int		parsing(char **av, int ac);
+
+int		init_data(t_data *data, char **av);
+void	init_philo(t_philo *philo, t_data *data);
+int		init_mutex(t_data *data);
+
+void	philo_think(t_philo *philo);
+void	philo_sleep(t_philo *philo);
+void	philo_eat(t_philo *philo);
+
+int		destroy(t_data *data);
+
+int		ft_atoi(const char *nptr);
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t nmemb, size_t size);
+size_t	get_current_time(void);
+int		ft_usleep(size_t milliseconds);
 
 #endif

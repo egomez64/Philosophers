@@ -2,10 +2,15 @@ NAME = philo
 
 CC = clang
 
-SRCS = src/ft_atoi.c \
-	src/main.c \
+SRCS = src/main.c \
 	src/parsing.c \
 	src/init.c \
+	src/routine.c \
+	src/destroy.c \
+	utils/ft_atoi.c \
+	utils/ft_calloc.c \
+	utils/ft_bzero.c \
+	utils/time.c \
 
 HEADERS = includes/philo.h
 
