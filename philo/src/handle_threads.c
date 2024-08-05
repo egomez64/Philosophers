@@ -19,7 +19,7 @@ void	handle_threads(t_philo *philo)
 	i = 0;
 	while (philo->data->n_philo > i)
 	{
-		pthread_create(&philo->thread_id, NULL, (void *)routine(philo), &philo[i]);
+		pthread_create(&philo->thread_id, NULL, (void *)&routine, &philo[i]);
 		i++;
 	}
 	i = 0;

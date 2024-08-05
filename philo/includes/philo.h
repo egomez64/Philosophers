@@ -50,8 +50,8 @@ typedef struct	s_philo
 	long int		last_eat;
 	int				nb_forks;
 	pthread_t		thread_id;
-	t_fork	*l_fork;
-	t_fork	*r_fork;
+	t_fork			*l_fork;
+	t_fork			*r_fork;
 }					t_philo;
 
 int		parsing(char **av, int ac);
@@ -63,6 +63,7 @@ int		init_mutex(t_data *data);
 void	handle_threads(t_philo *philo);
 
 int		check_death(t_philo *philo);
+int		check_satiety(t_philo *philo);
 void	wait_for_forks(t_philo *philo);
 void	philo_think(t_philo *philo);
 void	philo_sleep(t_philo *philo);

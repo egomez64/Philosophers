@@ -18,7 +18,8 @@ HEADERS = includes/philo.h
 
 OBJS = $(SRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -Iincludes
+CFLAGS = -Wall -Wextra -Werror
+INCFLAGS = -Iincludes
 LDFLAGS = -lpthread
 
 ifdef DEBUG
@@ -31,11 +32,11 @@ endif
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $@ $(LDFLAGS)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(INCFLAGS) $(OBJS) -o $@ $(LDFLAGS)
 
 %.o: %.c $(HEADER)
-	$(CC) $(CFLAGS) $< -c -o $@
+	$(CC) $(CFLAGS) $(INCFLAGS) $< -c -o $@
 
 clean:
 	rm -f $(OBJS)

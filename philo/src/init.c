@@ -14,6 +14,7 @@
 
 int    init_data(t_data *data, char **av)
 {
+	*data = (t_data){0};
 	data->n_philo = ft_atoi(av[1]);
 	data->time_to_die = ft_atoi(av[2]);
 	data->time_to_eat = ft_atoi(av[3]);
@@ -24,7 +25,6 @@ int    init_data(t_data *data, char **av)
 		data->max_eat = 0;
 	data->is_dead = false;
 	data->start_time = get_current_time();
-	data->satiety = 0;
 	return (0);
 }
 
@@ -51,16 +51,27 @@ void	init_philo(t_philo *philo, t_data *data)
 int	init_mutex(t_data *data)
 {
 	int	check;
+	int	i;
 
-	check = pthread_mutex_init(&data->forks->fork_mutex, NULL);
-	if (check != 1)
-		return (-1);
+	i = 0;
+	while (data->n_philo > i)
+	{
+		check = pthread_mutex_init(&data->forks->fork_mutex, NULL);
+		if (check != 1)
+			return (-1);
+		i++;
+	}
 	check = pthread_mutex_init(&data->is_dead_mutex, NULL);
 	if (check != 1)
 		return (-1);
-	check = pthread_mutex_init(&data->philo_satiety_mutex, NULL);
-	if (check != 1)
-		return (-1);
+	i = 0;
+	while (data->n_philo > i)
+	{
+		check = pthread_mutex_init(&data->philo_satiety_mutex, NULL);
+		if (check != 1)
+			return (-1);
+		i++;
+	}
 	check = pthread_mutex_init(&data->printf_mutex, NULL);
 	if (check != 1)
 		return (-1);
