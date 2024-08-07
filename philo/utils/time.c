@@ -21,12 +21,21 @@ size_t	get_current_time(void)
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
-int	ft_usleep(size_t milliseconds)
+int	ft_usleep(size_t milliseconds, t_philo *philo)
 {
 	size_t	start;
 
 	start = get_current_time();
 	while ((get_current_time() - start) < milliseconds)
-		usleep(500);
+	{
+		pthread_mutex_lock(&philo->data->is_dead_mutex);
+		if (philo->data->is_dead)
+		{
+			pthread_mutex_unlock(&philo->data->is_dead_mutex);
+			return (1);
+		}
+		pthread_mutex_unlock(&philo->data->is_dead_mutex);
+		usleep(milliseconds / 10);
+	}
 	return (0);
 }

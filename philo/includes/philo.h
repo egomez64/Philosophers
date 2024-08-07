@@ -36,23 +36,24 @@ typedef struct	s_data
     int 				max_eat;
 	bool				is_dead;
 	long int			start_time;
-	int					satiety;
 	t_fork				*forks;
 	pthread_mutex_t		is_dead_mutex;
-	pthread_mutex_t		philo_satiety_mutex;
+	pthread_mutex_t		max_eat_mutex;
+	pthread_mutex_t		time_to_sleep_mutex;
 	pthread_mutex_t		printf_mutex;
 }						t_data;
 
 typedef struct	s_philo
 {
-	t_data			*data;
-    int				id_philo;
-	long int		last_eat;
-	int				nb_forks;
-	pthread_t		thread_id;
-	t_fork			*l_fork;
-	t_fork			*r_fork;
-}					t_philo;
+	t_data				*data;
+    int					id_philo;
+	long int			last_eat;
+	int					nb_forks;
+	pthread_t			thread_id;
+	int					satiety;
+	t_fork				*l_fork;
+	t_fork				*r_fork;
+}						t_philo;
 
 int		parsing(char **av, int ac);
 
@@ -76,6 +77,6 @@ int		ft_atoi(const char *nptr);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 size_t	get_current_time(void);
-int		ft_usleep(size_t milliseconds);
+int		ft_usleep(size_t milliseconds, t_philo *philo);
 
 #endif

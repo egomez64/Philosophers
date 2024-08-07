@@ -44,6 +44,7 @@ void	init_philo(t_philo *philo, t_data *data)
 			philo[i].r_fork = &data->forks[0];
 		else
 			philo[i].r_fork = &data->forks[i + 1];
+		philo->satiety = 0;
 		i++;
 	}
 }
@@ -64,14 +65,12 @@ int	init_mutex(t_data *data)
 	check = pthread_mutex_init(&data->is_dead_mutex, NULL);
 	if (check != 1)
 		return (-1);
-	i = 0;
-	while (data->n_philo > i)
-	{
-		check = pthread_mutex_init(&data->philo_satiety_mutex, NULL);
-		if (check != 1)
-			return (-1);
-		i++;
-	}
+	check = pthread_mutex_init(&data->max_eat_mutex, NULL);
+	if (check != 1)
+		return (-1);
+	check = pthread_mutex_init(&data->time_to_sleep_mutex, NULL);
+	if (check != 1)
+		return (-1);
 	check = pthread_mutex_init(&data->printf_mutex, NULL);
 	if (check != 1)
 		return (-1);

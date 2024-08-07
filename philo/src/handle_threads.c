@@ -15,11 +15,18 @@
 void	handle_threads(t_philo *philo)
 {
 	int	i;
+	int	check;
 
 	i = 0;
 	while (philo->data->n_philo > i)
 	{
-		pthread_create(&philo->thread_id, NULL, (void *)&routine, &philo[i]);
+		check = pthread_create(&philo->thread_id, NULL, (void *)&routine, &philo[i]);
+		if (check != 0)
+		{
+			printf("philo %d : fail to be created\n", philo->id_philo);
+			philo->data->is_dead = true;
+			return ;
+		}
 		i++;
 	}
 	i = 0;
