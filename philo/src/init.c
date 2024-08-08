@@ -65,12 +65,6 @@ int	init_mutex(t_data *data)
 	check = pthread_mutex_init(&data->is_dead_mutex, NULL);
 	if (check != 1)
 		return (-1);
-	check = pthread_mutex_init(&data->max_eat_mutex, NULL);
-	if (check != 1)
-		return (-1);
-	check = pthread_mutex_init(&data->time_to_sleep_mutex, NULL);
-	if (check != 1)
-		return (-1);
 	check = pthread_mutex_init(&data->printf_mutex, NULL);
 	if (check != 1)
 		return (-1);

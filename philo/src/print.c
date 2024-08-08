@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy.c                                          :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egomez <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 16:15:26 by egomez            #+#    #+#             */
-/*   Updated: 2024/08/02 16:15:27 by egomez           ###   ########.fr       */
+/*   Created: 2024/08/08 15:04:02 by egomez            #+#    #+#             */
+/*   Updated: 2024/08/08 15:04:03 by egomez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include  <philo.h>
+#include <philo.h>
 
-int	destroy(t_data *data)
+void	print(t_philo *philo, char *str)
 {
-	int	i;
+	unsigned long	time;
 
-	i = 0;
-	while (data->n_philo > i)
-	{
-		pthread_mutex_destroy(&data->forks->fork_mutex);
-		i++;
-	}
-	pthread_mutex_destroy(&data->is_dead_mutex);
-	i = 0;
-	pthread_mutex_destroy(&data->printf_mutex);
-	return (0);
+	time = get_current_time() - philo->data->start_time;
+	printf("%zu %d %s\n", time, philo->id_philo, str);
 }

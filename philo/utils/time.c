@@ -35,7 +35,8 @@ int	ft_usleep(size_t milliseconds, t_philo *philo)
 			return (1);
 		}
 		pthread_mutex_unlock(&philo->data->is_dead_mutex);
-		usleep(milliseconds / 10);
+		//usleep(milliseconds / 10);
+		usleep(500);
 	}
 	return (0);
 }

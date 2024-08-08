@@ -9,6 +9,7 @@ SRCS = src/main.c \
 	src/forks.c \
 	src/routine.c \
 	src/destroy.c \
+	src/print.c \
 	utils/ft_atoi.c \
 	utils/ft_calloc.c \
 	utils/ft_bzero.c \

@@ -14,13 +14,10 @@
 
 static void	fork_msg(t_philo *philo)
 {
-	int	time;
-
-	time = get_current_time() - philo->data->start_time;
 	if (philo->data->is_dead)
 		return ;
 	pthread_mutex_lock(&philo->data->printf_mutex);
-	printf("%d %d has taken a fork\n", time, philo->id_philo);
+	print(philo, "has taken a fork");
 	pthread_mutex_unlock(&philo->data->printf_mutex);
 }
 
@@ -62,13 +59,8 @@ int	check_satiety(t_philo *philo)
 	i = 0;
 	while (philo->data->n_philo > i)
 	{
-		pthread_mutex_lock(&philo->data->max_eat_mutex);
 		if (philo->satiety < philo->data->max_eat)
-		{
-			pthread_mutex_unlock(&philo->data->max_eat_mutex);
 			return (0);
-		}
-		pthread_mutex_unlock(&philo->data->max_eat_mutex);
 		i++;
 	}
 	return (1);

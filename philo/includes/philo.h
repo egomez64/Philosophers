@@ -38,8 +38,6 @@ typedef struct	s_data
 	long int			start_time;
 	t_fork				*forks;
 	pthread_mutex_t		is_dead_mutex;
-	pthread_mutex_t		max_eat_mutex;
-	pthread_mutex_t		time_to_sleep_mutex;
 	pthread_mutex_t		printf_mutex;
 }						t_data;
 
@@ -69,7 +67,10 @@ void	wait_for_forks(t_philo *philo);
 void	philo_think(t_philo *philo);
 void	philo_sleep(t_philo *philo);
 void	philo_eat(t_philo *philo);
+void	think_until_the_end(t_philo *philo);
 void	*routine(t_philo *philo);
+
+void	print(t_philo *philo, char *str);
 
 int		destroy(t_data *data);
 
