@@ -20,26 +20,12 @@
     <list default="true" id="d2c9136c-3efb-4d6e-b8a3-4ad8e40f6b61" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/philo.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/philo.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/philo" beforeDir="false" afterPath="$PROJECT_DIR$/philo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/destroy.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/destroy.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/destroy.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/destroy.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/forks.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/forks.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/forks.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/forks.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/handle_threads.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/handle_threads.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/handle_threads.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/handle_threads.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/init.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/init.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/init.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parsing.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/parsing.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routine.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/routine.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routine.o" beforeDir="false" afterPath="$PROJECT_DIR$/src/routine.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/ft_atoi.o" beforeDir="false" afterPath="$PROJECT_DIR$/utils/ft_atoi.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/ft_bzero.o" beforeDir="false" afterPath="$PROJECT_DIR$/utils/ft_bzero.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/ft_calloc.o" beforeDir="false" afterPath="$PROJECT_DIR$/utils/ft_calloc.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/time.c" beforeDir="false" afterPath="$PROJECT_DIR$/utils/time.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/time.o" beforeDir="false" afterPath="$PROJECT_DIR$/utils/time.o" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,6 +143,7 @@
       <workItem from="1723024104030" duration="9793000" />
       <workItem from="1723122202790" duration="4347000" />
       <workItem from="1723130479343" duration="2599000" />
+      <workItem from="1723290156437" duration="7322000" />
     </task>
     <servers />
   </component>

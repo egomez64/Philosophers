@@ -17,6 +17,11 @@ static void	fork_msg(t_philo *philo)
 	if (philo->data->is_dead)
 		return ;
 	pthread_mutex_lock(&philo->data->printf_mutex);
+	if (philo->data->is_dead)
+	{
+		pthread_mutex_unlock(&philo->data->printf_mutex);
+		return ;
+	}
 	print(philo, "has taken a fork");
 	pthread_mutex_unlock(&philo->data->printf_mutex);
 }
@@ -29,8 +34,8 @@ void	wait_for_forks(t_philo *philo)
 		return ;
 	while (philo->nb_forks < 2)
 	{
-		if (check_death(philo))
-			return ;
+		 if (check_death(philo))
+		 	return ;
 		pthread_mutex_lock(&philo->l_fork->fork_mutex);
 		if (philo->l_fork->usable == 0)
 		{
@@ -39,8 +44,8 @@ void	wait_for_forks(t_philo *philo)
 			philo->nb_forks ++;
 		}
 		pthread_mutex_unlock(&philo->l_fork->fork_mutex);
-		if (check_death(philo))
-			return ;
+		 if (check_death(philo))
+		 	return ;
 		pthread_mutex_lock(&philo->r_fork->fork_mutex);
 		if (philo->r_fork->usable == 0)
 		{
@@ -54,14 +59,9 @@ void	wait_for_forks(t_philo *philo)
 
 int	check_satiety(t_philo *philo)
 {
-	int		i;
-
-	i = 0;
-	while (philo->data->n_philo > i)
-	{
-		if (philo->satiety < philo->data->max_eat)
-			return (0);
-		i++;
-	}
-	return (1);
+	if (philo->satiety == philo->data->max_eat)
+		philo->data->count_satiety ++;
+	if (philo->data->count_satiety == philo->data->n_philo)
+		return (1);
+	return (0);
 }

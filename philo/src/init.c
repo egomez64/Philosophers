@@ -23,6 +23,7 @@ int    init_data(t_data *data, char **av)
 		data->max_eat = ft_atoi(av[5]);
 	else
 		data->max_eat = 0;
+	data->count_satiety = 0;
 	data->is_dead = false;
 	data->start_time = get_current_time();
 	return (0);

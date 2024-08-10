@@ -20,19 +20,15 @@ void	handle_threads(t_philo *philo)
 	i = 0;
 	while (philo->data->n_philo > i)
 	{
-		//if(i%2 == 0)
-		//{
-			check = pthread_create(&philo->thread_id, NULL, (void *)&routine, &philo[i]);
-			if (check != 0)
-			{
-				printf("philo %d : fail to be created\n", philo->id_philo);
-				philo->data->is_dead = true;
-				return ;
-			}
-		//}
+		check = pthread_create(&philo->thread_id, NULL, (void *)&routine, &philo[i]);
+		if (check != 0)
+		{
+			printf("philo %d : fail to be created\n", philo->id_philo);
+			philo->data->is_dead = true;
+			return ;
+		}
 		i++;
 	}
-	i = 0;
 	i = 0;
 	while (philo->data->n_philo > i)
 	{
