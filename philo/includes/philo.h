@@ -68,7 +68,8 @@ void	wait_for_forks(t_philo *philo);
 void	philo_think(t_philo *philo);
 void	philo_sleep(t_philo *philo);
 void	philo_eat(t_philo *philo);
-void	think_until_the_end(t_philo *philo);
+void	supervisor(t_philo	*philo);
+int		interrupt(t_philo *philo);
 void	*routine(t_philo *philo);
 
 void	print(t_philo *philo, char *str);

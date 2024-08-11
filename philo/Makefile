@@ -9,6 +9,7 @@ SRCS = src/main.c \
 	src/forks.c \
 	src/routine.c \
 	src/destroy.c \
+	src/supervisor.c \
 	src/print.c \
 	utils/ft_atoi.c \
 	utils/ft_calloc.c \
@@ -19,7 +20,7 @@ HEADERS = includes/philo.h
 
 OBJS = $(SRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 INCFLAGS = -Iincludes
 LDFLAGS = -lpthread
 
@@ -28,7 +29,7 @@ CFLAGS = -Wall -Wextra -g
 endif
 
 ifdef CHECK
-CFLAGS += -fsanitize=address
+CFLAGS += -fsanitize=thread
 endif
 
 all: $(NAME)

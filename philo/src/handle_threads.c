@@ -12,27 +12,31 @@
 
 #include <philo.h>
 
-void	handle_threads(t_philo *philo)
+static int thread_loop(t_philo *philo)
 {
 	int	i;
-	int	check;
 
 	i = 0;
 	while (philo->data->n_philo > i)
 	{
-		check = pthread_create(&philo->thread_id, NULL, (void *)&routine, &philo[i]);
-		if (check != 0)
+		if (pthread_create(&philo[i].thread_id, NULL, (void *)&routine, &philo[i]))
 		{
 			printf("philo %d : fail to be created\n", philo->id_philo);
 			philo->data->is_dead = true;
-			return ;
+			break ;
 		}
 		i++;
 	}
-	i = 0;
-	while (philo->data->n_philo > i)
-	{
+	return (i);
+}
+
+void	handle_threads(t_philo *philo)
+{
+	int	i;
+
+	i = thread_loop(philo);
+	if (i == philo->data->n_philo)
+		supervisor(philo);
+	while (i--)
 		pthread_join(philo[i].thread_id, NULL);
-		i++;
-	}
 }

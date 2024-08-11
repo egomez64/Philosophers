@@ -40,11 +40,28 @@ void	init_philo(t_philo *philo, t_data *data)
 		philo[i].id_philo = i + 1;
 		philo[i].last_eat = 0;
 		philo[i].nb_forks = 0;
-		philo[i].l_fork = &data->forks[i];
+		// if (!(i % 2))
+		// {
+		// 	philo[i].l_fork = &data->forks[i % data->n_philo];
+		// 	philo[i].r_fork = &data->forks[(i + 1) % data->n_philo];
+		// }
+		// else
+		// {
+		// 	philo[i].r_fork = &data->forks[i % data->n_philo];
+		// 	philo[i].l_fork = &data->forks[(i + 1) % data->n_philo];
+		// }
+
+		philo[i].l_fork = &data->forks[i % data->n_philo];
+		philo[i].r_fork = &data->forks[(i + 1) % data->n_philo];
+
 		if (philo[i].id_philo == data->n_philo)
-			philo[i].r_fork = &data->forks[0];
-		else
-			philo[i].r_fork = &data->forks[i + 1];
+		{
+			t_fork	*tmp = philo[i].l_fork;
+
+			philo[i].l_fork = philo[i].r_fork;
+			philo[i].r_fork = tmp;
+		}
+
 		philo->satiety = 0;
 		i++;
 	}
