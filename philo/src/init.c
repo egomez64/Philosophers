@@ -12,7 +12,7 @@
 
 #include <philo.h>
 
-int    init_data(t_data *data, char **av)
+int	init_data(t_data *data, char **av)
 {
 	*data = (t_data){0};
 	data->n_philo = ft_atoi(av[1]);
@@ -31,7 +31,8 @@ int    init_data(t_data *data, char **av)
 
 void	init_philo(t_philo *philo, t_data *data)
 {
-	int	i;
+	int		i;
+	t_fork	*tmp;
 
 	i = 0;
 	while (data->n_philo > i)
@@ -40,28 +41,14 @@ void	init_philo(t_philo *philo, t_data *data)
 		philo[i].id_philo = i + 1;
 		philo[i].last_eat = 0;
 		philo[i].nb_forks = 0;
-		// if (!(i % 2))
-		// {
-		// 	philo[i].l_fork = &data->forks[i % data->n_philo];
-		// 	philo[i].r_fork = &data->forks[(i + 1) % data->n_philo];
-		// }
-		// else
-		// {
-		// 	philo[i].r_fork = &data->forks[i % data->n_philo];
-		// 	philo[i].l_fork = &data->forks[(i + 1) % data->n_philo];
-		// }
-
 		philo[i].l_fork = &data->forks[i % data->n_philo];
 		philo[i].r_fork = &data->forks[(i + 1) % data->n_philo];
-
 		if (philo[i].id_philo == data->n_philo)
 		{
-			t_fork	*tmp = philo[i].l_fork;
-
+			tmp = philo[i].l_fork;
 			philo[i].l_fork = philo[i].r_fork;
 			philo[i].r_fork = tmp;
 		}
-
 		philo->satiety = 0;
 		i++;
 	}

@@ -12,14 +12,15 @@
 
 #include <philo.h>
 
-static int thread_loop(t_philo *philo)
+static int	thread_loop(t_philo *philo)
 {
 	int	i;
 
 	i = 0;
 	while (philo->data->n_philo > i)
 	{
-		if (pthread_create(&philo[i].thread_id, NULL, (void *)&routine, &philo[i]))
+		if (pthread_create(&philo[i].thread_id, NULL,
+				(void *)routine, &philo[i]))
 		{
 			printf("philo %d : fail to be created\n", philo->id_philo);
 			philo->data->is_dead = true;

@@ -67,12 +67,16 @@ void	wait_for_forks(t_philo *philo)
 	{
 		pthread_mutex_lock(&philo->l_fork->fork_mutex);
 		pthread_mutex_lock(&philo->r_fork->fork_mutex);
+		if (interrupt(philo))
+			return ;
 		if (philo->l_fork->usable || philo->r_fork->usable)
 		{
 			pthread_mutex_unlock(&philo->r_fork->fork_mutex);
 			pthread_mutex_unlock(&philo->l_fork->fork_mutex);
 			continue ;
 		}
+		if (interrupt(philo))
+			return ;
 		if (philo->id_philo % 2)
 			res = start_l(philo);
 		else
@@ -81,6 +85,5 @@ void	wait_for_forks(t_philo *philo)
 		pthread_mutex_unlock(&philo->l_fork->fork_mutex);
 		if (res)
 			break ;
-		usleep(100);
 	}
 }

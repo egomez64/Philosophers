@@ -12,7 +12,25 @@
 
 #include <philo.h>
 
-int	check_death(t_philo *philo)
+static int	check_is_dead(t_philo *philo)
+{
+	if (philo->data->is_dead)
+	{
+		pthread_mutex_unlock(&philo->data->is_dead_mutex);
+		return (1);
+	}
+	return (0);
+}
+
+static void	print_death(t_philo philo, size_t time)
+{
+	pthread_mutex_lock(&philo.data->printf_mutex);
+	printf("%zu %d died\n", time, philo.id_philo);
+	pthread_mutex_unlock(&philo.data->printf_mutex);
+	philo.data->is_dead = true;
+}
+
+static int	check_death(t_philo *philo)
 {
 	int		i;
 	size_t	time;
@@ -24,29 +42,19 @@ int	check_death(t_philo *philo)
 		pthread_mutex_lock(&philo->data->is_dead_mutex);
 		if (time - philo[i].last_eat >= (size_t)philo->data->time_to_die)
 		{
-			if (philo->data->is_dead)
-			{
-				pthread_mutex_unlock(&philo->data->is_dead_mutex);
+			if (check_is_dead(philo))
 				return (1);
-			}
-			pthread_mutex_lock(&philo->data->printf_mutex);
-			printf("%zu %d died\n", time, philo[i].id_philo);
-			pthread_mutex_unlock(&philo->data->printf_mutex);
-			philo->data->is_dead = true;
+			print_death(philo[i], time);
 		}
-		if (philo->data->is_dead)
-		{
-			pthread_mutex_unlock(&philo->data->is_dead_mutex);
+		if (check_is_dead(philo))
 			return (1);
-		}
 		i++;
 		pthread_mutex_unlock(&philo->data->is_dead_mutex);
-		usleep(100);
 	}
 	return (0);
 }
 
-int	check_satiety(t_philo *philo)
+static int	check_satiety(t_philo *philo)
 {
 	int	i;
 
@@ -54,7 +62,8 @@ int	check_satiety(t_philo *philo)
 	pthread_mutex_lock(&philo->data->is_dead_mutex);
 	while (philo->data->n_philo > i)
 	{
-		if (philo->data->max_eat > 0 && philo[i].satiety >= philo->data->max_eat)
+		if (philo->data->max_eat > 0
+			&& philo[i].satiety >= philo->data->max_eat)
 			philo->data->count_satiety++;
 		i++;
 	}
@@ -81,7 +90,7 @@ void	supervisor(t_philo	*philo)
 	else
 	{
 		time = get_current_time() - philo->data->start_time;
-		while (time  < (size_t)philo->data->time_to_die)
+		while (time < (size_t)philo->data->time_to_die)
 			time = get_current_time() - philo->data->start_time;
 		pthread_mutex_lock(&philo->data->is_dead_mutex);
 		philo->data->is_dead = true;

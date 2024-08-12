@@ -21,21 +21,34 @@ static void	err(int nb)
 	else if (nb == 2)
 		printf("error : the arguments have to be positive !\n");
 	else if (nb == 3)
-		printf("error : there is more than 200 philosophers or less than 1 eat !\n");
+		printf("error : there is more than 200 philosophers "
+			"or less than 1 eat !\n");
 }
 
-int parsing(char **av, int ac)
+static int	check_negative(char **av)
 {
-	int i;
-	int y;
+	int	i;
 
-	if (!ac || ac < 5 || ac > 6)
-	{
-		err(0);
-		return (0);
-	}
 	i = 1;
-	while(av[i])
+	while (av[i])
+	{
+		if (ft_atoi(av[i]) < 1)
+		{
+			err(2);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
+static int	check_number(char **av)
+{
+	int	i;
+	int	y;
+
+	i = 1;
+	while (av[i])
 	{
 		y = 0;
 		while (av[i][y])
@@ -49,16 +62,20 @@ int parsing(char **av, int ac)
 		}
 		i++;
 	}
-	i = 1;
-	while (av[i])
+	return (1);
+}
+
+int	parsing(char **av, int ac)
+{
+	if (!ac || ac < 5 || ac > 6)
 	{
-		if (ft_atoi(av[i]) < 1)
-		{
-			err(2);
-			return (0);
-		}
-		i++;
+		err(0);
+		return (0);
 	}
+	if (!check_number(av))
+		return (0);
+	if (!check_negative(av))
+		return (0);
 	if ((ft_atoi(av[1]) > 200) || (av[5] && ft_atoi(av[5]) < 1))
 	{
 		err(3);
@@ -66,4 +83,3 @@ int parsing(char **av, int ac)
 	}
 	return (1);
 }
-

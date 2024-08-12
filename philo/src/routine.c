@@ -24,7 +24,7 @@ int	interrupt(t_philo *philo)
 	return (0);
 }
 
-void	philo_think(t_philo *philo)
+static void	philo_think(t_philo *philo)
 {
 	if (interrupt(philo))
 		return ;
@@ -33,7 +33,7 @@ void	philo_think(t_philo *philo)
 	pthread_mutex_unlock(&philo->data->printf_mutex);
 }
 
-void	philo_sleep(t_philo *philo)
+static void	philo_sleep(t_philo *philo)
 {
 	if (interrupt(philo))
 		return ;
@@ -43,7 +43,7 @@ void	philo_sleep(t_philo *philo)
 	ft_usleep(philo->data->time_to_sleep, philo);
 }
 
-void	philo_eat(t_philo *philo)
+static void	philo_eat(t_philo *philo)
 {
 	if (interrupt(philo))
 		return ;
@@ -60,7 +60,6 @@ void	philo_eat(t_philo *philo)
 	philo->r_fork->usable = 0;
 	pthread_mutex_unlock(&philo->r_fork->fork_mutex);
 	pthread_mutex_unlock(&philo->l_fork->fork_mutex);
-
 	pthread_mutex_lock(&philo->data->is_dead_mutex);
 	philo->satiety++;
 	philo->nb_forks = 0;
@@ -73,6 +72,8 @@ void	*routine(t_philo *philo)
 		usleep(1000);
 	while (1)
 	{
+		if (interrupt(philo))
+			return (NULL);
 		wait_for_forks(philo);
 		if (interrupt(philo))
 			return (NULL);
