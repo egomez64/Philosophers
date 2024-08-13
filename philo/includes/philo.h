@@ -67,6 +67,7 @@ int		interrupt(t_philo *philo);
 void	*routine(t_philo *philo);
 
 void	print(t_philo *philo, char *str);
+void	fork_msg(t_philo *philo);
 
 int		destroy(t_data *data);
 

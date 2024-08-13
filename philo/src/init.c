@@ -42,12 +42,15 @@ void	init_philo(t_philo *philo, t_data *data)
 		philo[i].last_eat = 0;
 		philo[i].nb_forks = 0;
 		philo[i].l_fork = &data->forks[i % data->n_philo];
-		philo[i].r_fork = &data->forks[(i + 1) % data->n_philo];
-		if (philo[i].id_philo == data->n_philo)
+		if (philo->data->n_philo > 1)
 		{
-			tmp = philo[i].l_fork;
-			philo[i].l_fork = philo[i].r_fork;
-			philo[i].r_fork = tmp;
+			philo[i].r_fork = &data->forks[(i + 1) % data->n_philo];
+			if (philo[i].id_philo == data->n_philo)
+			{
+				tmp = philo[i].l_fork;
+				philo[i].l_fork = philo[i].r_fork;
+				philo[i].r_fork = tmp;
+			}
 		}
 		philo->satiety = 0;
 		i++;

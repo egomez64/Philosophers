@@ -19,3 +19,10 @@ void	print(t_philo *philo, char *str)
 	time = get_current_time() - philo->data->start_time;
 	printf("%zu %d %s\n", time, philo->id_philo, str);
 }
+
+void	fork_msg(t_philo *philo)
+{
+	if (interrupt(philo))
+		return ;
+	print(philo, "has taken a fork");
+}

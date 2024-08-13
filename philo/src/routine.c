@@ -69,13 +69,16 @@ static void	philo_eat(t_philo *philo)
 void	*routine(t_philo *philo)
 {
 	if (philo->id_philo % 2 == 0)
-		usleep(1000);
+	{
+		philo_think(philo);
+		usleep(50);
+	}
 	while (1)
 	{
 		if (interrupt(philo))
 			return (NULL);
 		wait_for_forks(philo);
-		if (interrupt(philo))
+		if (interrupt(philo) || philo->data->n_philo == 1)
 			return (NULL);
 		philo_eat(philo);
 		if (interrupt(philo))
