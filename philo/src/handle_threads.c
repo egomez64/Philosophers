@@ -12,6 +12,18 @@
 
 #include <philo.h>
 
+int	interrupt(t_philo *philo)
+{
+	pthread_mutex_lock(&philo->data->is_dead_mutex);
+	if (philo->data->is_dead)
+	{
+		pthread_mutex_unlock(&philo->data->is_dead_mutex);
+		return (1);
+	}
+	pthread_mutex_unlock(&philo->data->is_dead_mutex);
+	return (0);
+}
+
 static int	thread_loop(t_philo *philo)
 {
 	int	i;

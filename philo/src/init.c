@@ -32,7 +32,6 @@ int	init_data(t_data *data, char **av)
 void	init_philo(t_philo *philo, t_data *data)
 {
 	int		i;
-	t_fork	*tmp;
 
 	i = 0;
 	while (data->n_philo > i)
@@ -42,16 +41,10 @@ void	init_philo(t_philo *philo, t_data *data)
 		philo[i].last_eat = 0;
 		philo[i].nb_forks = 0;
 		philo[i].l_fork = &data->forks[i % data->n_philo];
-		if (philo->data->n_philo > 1)
-		{
+		if (philo[i].id_philo == data->n_philo)
+			philo[i].r_fork = philo[0].l_fork;
+		else
 			philo[i].r_fork = &data->forks[(i + 1) % data->n_philo];
-			if (philo[i].id_philo == data->n_philo)
-			{
-				tmp = philo[i].l_fork;
-				philo[i].l_fork = philo[i].r_fork;
-				philo[i].r_fork = tmp;
-			}
-		}
 		philo->satiety = 0;
 		i++;
 	}

@@ -6,7 +6,6 @@ SRCS = src/main.c \
 	src/parsing.c \
 	src/init.c \
 	src/handle_threads.c \
-	src/forks.c \
 	src/routine.c \
 	src/destroy.c \
 	src/supervisor.c \
@@ -20,12 +19,12 @@ HEADERS = includes/philo.h
 
 OBJS = $(SRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 INCFLAGS = -Iincludes
 LDFLAGS = -lpthread
 
 ifdef DEBUG
-CFLAGS = -Wall -Wextra -g
+CFLAGS += -g
 endif
 
 ifdef CHECK

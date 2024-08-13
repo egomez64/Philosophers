@@ -23,7 +23,7 @@
 
 typedef struct s_fork
 {
-	int				usable;
+/*	int				usable;*/
 	pthread_mutex_t	fork_mutex;
 }					t_fork;
 
@@ -69,7 +69,7 @@ void	*routine(t_philo *philo);
 void	print(t_philo *philo, char *str);
 void	fork_msg(t_philo *philo);
 
-int		destroy(t_data *data);
+int		destroy(t_data *data, t_philo *philo);
 
 int		ft_atoi(const char *nptr);
 void	ft_bzero(void *s, size_t n);

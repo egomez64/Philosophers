@@ -29,7 +29,7 @@ int	main(int ac, char **av)
 	init_philo(philo, &data);
 	init_mutex(&data);
 	handle_threads(philo);
-	destroy(&data);
+	destroy(&data, philo);
 	free (philo);
 	free (data.forks);
 	return (0);

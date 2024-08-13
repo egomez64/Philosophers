@@ -17,12 +17,7 @@ void	print(t_philo *philo, char *str)
 	unsigned long	time;
 
 	time = get_current_time() - philo->data->start_time;
+	pthread_mutex_lock(&philo->data->printf_mutex);
 	printf("%zu %d %s\n", time, philo->id_philo, str);
-}
-
-void	fork_msg(t_philo *philo)
-{
-	if (interrupt(philo))
-		return ;
-	print(philo, "has taken a fork");
+	pthread_mutex_unlock(&philo->data->printf_mutex);
 }
