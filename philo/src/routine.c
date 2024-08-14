@@ -29,7 +29,7 @@ static void	philo_sleep(t_philo *philo)
 
 static void	lock_order(t_philo *philo)
 {
-	if (philo->id_philo % 2)
+	if (philo->id_philo % 2 == 0)
 	{
 		pthread_mutex_lock(&philo->l_fork->fork_mutex);
 		if (!interrupt(philo))
@@ -51,16 +51,15 @@ static void	lock_order(t_philo *philo)
 
 static void	philo_eat(t_philo *philo)
 {
-	int	time;
+	unsigned long	time;
 
-	if (interrupt(philo))
-		return ;
 	time = (get_current_time() - philo->data->start_time) - philo->last_eat;
-	while (philo->data->n_philo % 2 == 1 && time
+	while (philo->data->n_philo % 2 == 1 && (int)time
 		< (philo->data->time_to_eat * 3) && philo->satiety != 0)
 	{
 		if (interrupt(philo))
 			return ;
+		time = (get_current_time() - philo->data->start_time) - philo->last_eat;
 	}
 	lock_order(philo);
 	if (!interrupt(philo))

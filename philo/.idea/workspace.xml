@@ -17,11 +17,14 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2c9136c-3efb-4d6e-b8a3-4ad8e40f6b61" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+    <list default="true" id="3afde06d-f832-4863-8de5-65b3a4b1621f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/philo.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/handle_threads.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/handle_threads.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/philo.h" beforeDir="false" afterPath="$PROJECT_DIR$/includes/philo.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/init.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/init.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routine.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/routine.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/supervisor.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/supervisor.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,60 +72,36 @@
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
     <option name="majorVersion" value="2024" />
-    <option name="minorVersion" value="1" />
+    <option name="minorVersion" value="1.5" />
     <option name="productBranch" value="Classic" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 0
+  &quot;associatedIndex&quot;: 7
 }</component>
-  <component name="ProjectId" id="2kKEw4PxJnQFTxRyJpafIHyvraV" />
+  <component name="ProjectId" id="2kekiOsacP1FmpiaHEeftUUOsLA" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Native Application.all.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/nfs/homes/egomez/Documents/Projets/Philosophers/Philosophers/philo&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RunManager" selected="Native Application.all">
-    <configuration name="all" type="CLionNativeAppRunConfigurationType" PROGRAM_PARAMS="5 800 200 200 1" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="philo" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="./philo">
-      <method v="2">
-        <option name="CLION.COMPOUND.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="all" type="CLionNativeAppRunConfigurationType" PROGRAM_PARAMS="5 800 200 200 1" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="philo" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="./philo">
-      <method v="2">
-        <option name="CLION.COMPOUND.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="all" type="CLionNativeAppRunConfigurationType" PROGRAM_PARAMS="5 800 200 200 1" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="philo" TARGET_NAME="all" CONFIG_NAME="all" version="1" RUN_PATH="./philo">
-      <method v="2">
-        <option name="CLION.COMPOUND.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="fclean" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="philo" TARGET_NAME="fclean" CONFIG_NAME="fclean" version="1">
-      <method v="2">
-        <option name="CLION.COMPOUND.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="fclean" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="philo" TARGET_NAME="fclean" CONFIG_NAME="fclean" version="1">
+    <configuration name="all" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="philo" TARGET_NAME="all" CONFIG_NAME="all" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
@@ -137,34 +116,9 @@
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="philo" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="philo" TARGET_NAME="philo" CONFIG_NAME="philo" version="1">
-      <method v="2">
-        <option name="CLION.COMPOUND.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="philo" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="philo" TARGET_NAME="philo" CONFIG_NAME="philo" version="1">
-      <method v="2">
-        <option name="CLION.COMPOUND.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="re" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="philo" TARGET_NAME="re" CONFIG_NAME="re" version="1">
       <method v="2">
         <option name="CLION.COMPOUND.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="re" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="philo" TARGET_NAME="re" CONFIG_NAME="re" version="1">
-      <method v="2">
-        <option name="CLION.COMPOUND.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="re" type="CLionNativeAppRunConfigurationType" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="philo" TARGET_NAME="re" CONFIG_NAME="re" version="1">
-      <method v="2">
-        <option name="CLION.COMPOUND.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <list>
@@ -177,21 +131,13 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d2c9136c-3efb-4d6e-b8a3-4ad8e40f6b61" name="Changes" comment="" />
-      <created>1723024102783</created>
+      <changelist id="3afde06d-f832-4863-8de5-65b3a4b1621f" name="Changes" comment="" />
+      <created>1723651555846</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1723024102783</updated>
-      <workItem from="1723024104030" duration="9793000" />
-      <workItem from="1723122202790" duration="4347000" />
-      <workItem from="1723130479343" duration="2599000" />
-      <workItem from="1723290156437" duration="7322000" />
-      <workItem from="1723377343205" duration="18093000" />
-      <workItem from="1723459651868" duration="4651000" />
-      <workItem from="1723468214487" duration="414000" />
-      <workItem from="1723545818371" duration="3647000" />
-      <workItem from="1723561661319" duration="7689000" />
-      <workItem from="1723637847065" duration="3329000" />
+      <updated>1723651555846</updated>
+      <workItem from="1723651556923" duration="3788000" />
+      <workItem from="1723657230408" duration="5534000" />
     </task>
     <servers />
   </component>

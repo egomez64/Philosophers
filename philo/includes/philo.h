@@ -23,7 +23,6 @@
 
 typedef struct s_fork
 {
-/*	int				usable;*/
 	pthread_mutex_t	fork_mutex;
 }					t_fork;
 

@@ -95,6 +95,6 @@ void	supervisor(t_philo	*philo)
 		pthread_mutex_lock(&philo->data->is_dead_mutex);
 		philo->data->is_dead = true;
 		pthread_mutex_unlock(&philo->data->is_dead_mutex);
-		printf("%zu 1 died\n", time);
+		print(philo, "died");
 	}
 }
