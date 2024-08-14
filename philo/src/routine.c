@@ -51,17 +51,28 @@ static void	lock_order(t_philo *philo)
 
 static void	philo_eat(t_philo *philo)
 {
+	int	time;
+
 	if (interrupt(philo))
 		return ;
+	time = (get_current_time() - philo->data->start_time) - philo->last_eat;
+	while (philo->data->n_philo % 2 == 1 && time
+		< (philo->data->time_to_eat * 3) && philo->satiety != 0)
+	{
+		if (interrupt(philo))
+			return ;
+	}
 	lock_order(philo);
 	if (!interrupt(philo))
 	{
 		print(philo, "is eating");
 		pthread_mutex_lock(&philo->data->is_dead_mutex);
 		philo->last_eat = get_current_time() - philo->data->start_time;
-		philo->satiety++;
 		pthread_mutex_unlock(&philo->data->is_dead_mutex);
 		ft_usleep(philo->data->time_to_eat, philo);
+		pthread_mutex_lock(&philo->data->is_dead_mutex);
+		philo->satiety++;
+		pthread_mutex_unlock(&philo->data->is_dead_mutex);
 	}
 	pthread_mutex_unlock(&philo->r_fork->fork_mutex);
 	pthread_mutex_unlock(&philo->l_fork->fork_mutex);
@@ -74,11 +85,7 @@ void	*routine(t_philo *philo)
 		print(philo, "has taken a fork");
 		return (NULL);
 	}
-	if (philo->id_philo % 2)
-	{
-		philo_think(philo);
-		usleep(86);
-	}
+	philo_think(philo);
 	while (1)
 	{
 		if (interrupt(philo))

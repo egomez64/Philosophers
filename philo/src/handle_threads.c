@@ -24,23 +24,44 @@ int	interrupt(t_philo *philo)
 	return (0);
 }
 
+static int	load_thread(t_philo *philo, int i)
+{
+	if (pthread_create(&philo[i].thread_id, NULL,
+			(void *)routine, &philo[i]))
+	{
+		printf("philo %d : fail to be created\n", philo->id_philo);
+		philo->data->is_dead = true;
+		return (1);
+	}
+	return (0);
+}
+
 static int	thread_loop(t_philo *philo)
 {
 	int	i;
+	int	j;
+	int	offset;
+	int	n;
 
-	i = 0;
-	while (philo->data->n_philo > i)
+	n = 0;
+	offset = 3;
+	if (philo->data->n_philo % 2 == 0)
+		offset = 2;
+	j = 0;
+	while (j < offset)
 	{
-		if (pthread_create(&philo[i].thread_id, NULL,
-				(void *)routine, &philo[i]))
+		i = j;
+		while (philo->data->n_philo > i)
 		{
-			printf("philo %d : fail to be created\n", philo->id_philo);
-			philo->data->is_dead = true;
-			break ;
+			if (load_thread(philo, i))
+				break ;
+			n++;
+			i += offset;
 		}
-		i++;
+		j++;
+		usleep(1000);
 	}
-	return (i);
+	return (n);
 }
 
 void	handle_threads(t_philo *philo)
